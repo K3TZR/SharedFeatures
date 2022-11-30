@@ -19,7 +19,6 @@ let package = Package(
     // Shared
     .target( name: "Shared", dependencies: [
     ]),
-
     
     // ---------------- Tests ----------------
     // SharedFeaturesTests
