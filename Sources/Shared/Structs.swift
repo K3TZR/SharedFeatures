@@ -20,6 +20,32 @@ public let kRemoved = "removed"
 // ----------------------------------------------------------------------------
 // MARK: - Structs & Enums
 
+public struct DefaultValue: Equatable, Codable {
+  public var serial: String
+  public var source: String
+  public var station: String?
+  
+  public init
+  (
+    _ selection: Pickable
+  )
+  {
+    self.serial = selection.packet.serial
+    self.source = selection.packet.source.rawValue
+    self.station = selection.station
+  }
+}
+
+public enum ConnectionError: String, Error {
+  case instantiation = "Failed to create Radio object"
+  case connection = "Failed to connect to Radio"
+  case replyError = "Reply with error"
+  case tcpConnect = "Tcp Failed to connect"
+  case udpBind = "Udp Failed to bind"
+  case wanConnect = "WanConnect Failed"
+  case wanValidation = "WanValidation Failed"
+}
+
 public enum ConnectionType: String, Equatable {
   case gui = "Radio"
   case nonGui = "Station"

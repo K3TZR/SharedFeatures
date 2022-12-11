@@ -36,19 +36,16 @@ public struct Pickable: Identifiable, Equatable {
   public var id: UUID
   public var packet: Packet
   public var station: String
-  public var isDefault: Bool
 
   public init(
     id: UUID = UUID(),
     packet: Packet,
-    station: String,
-    isDefault: Bool
+    station: String
   )
   {
     self.id = id
     self.packet = packet
     self.station = station
-    self.isDefault = isDefault
   }
 }
 
