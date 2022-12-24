@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ComposableArchitecture
 
 // ----------------------------------------------------------------------------
 // MARK: - Public structs and enums
@@ -55,16 +56,33 @@ public struct Pickable: Identifiable, Equatable {
 
 public class Packet: Identifiable, Equatable, Hashable, ObservableObject {
   
-  public init(source: PacketSource = .local, nickname: String = "", status: String = "", guiClientStations: String = "") {
+  public init(source: PacketSource = .local,
+              nickname: String = "",
+              serial: String = "",
+              publicIp: String = "",
+              status: String = "",
+              guiClientHandles: String = "",
+              guiClientPrograms: String = "",
+              guiClientStations: String = "",
+              guiClientIps: String = ""
+  ) {
     lastSeen = Date() // now
     self.source = source
+    self.nickname = nickname
+    self.serial = serial
+    self.publicIp = publicIp
+    self.status = status
+    self.guiClientHandles = guiClientHandles
+    self.guiClientPrograms = guiClientPrograms
+    self.guiClientStations = guiClientStations
+    self.guiClientIps = guiClientIps
   }
 
   // ----------------------------------------------------------------------------
   // MARK: - Public properties
   
   // these fields are NOT in the received packet but are in the Packet struct
-//  @Published public var guiClients = IdentifiedArrayOf<GuiClient>()
+  public var guiClients = IdentifiedArrayOf<GuiClient>()
   public var id: String { serial + publicIp }
   public var isPortForwardOn = false
   public var lastSeen: Date
