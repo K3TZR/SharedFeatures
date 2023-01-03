@@ -82,7 +82,7 @@ public class Packet: Identifiable, Equatable, Hashable, ObservableObject {
   // MARK: - Public properties
   
   // these fields are NOT in the received packet but are in the Packet struct
-  public var guiClients = IdentifiedArrayOf<GuiClient>()
+  @Published public var guiClients = IdentifiedArrayOf<GuiClient>()
   public var id: String { serial + publicIp }
   public var isPortForwardOn = false
   public var lastSeen: Date
